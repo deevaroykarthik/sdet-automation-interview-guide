@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SDET & QA Automation — Complete Interview & Framework Guide 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=DM+Sans:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05080f;--s1:#0c1220;--s2:#131c30;--accent:#00e599;--accent2:#00b8ff;
+  --orange:#ff8c42;--purple:#b388ff;--red:#ff5c5c;--yellow:#ffd166;
+  --text:#d4dae5;--muted:#7a8699;--border:#1a2540;--white:#f0f4fa;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.72}
+.hero{padding:56px 24px 36px;text-align:center;background:linear-gradient(160deg,#05080f 0%,#0d1a2e 40%,#0a1628 100%);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;top:-40%;right:-20%;width:60%;height:180%;background:radial-gradient(circle,rgba(0,229,153,.06) 0%,transparent 60%);pointer-events:none}
+.hero h1{font-size:clamp(1.8rem,4.5vw,2.8rem);font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;position:relative;margin-bottom:6px}
+.hero p{color:var(--muted);font-size:.95rem;position:relative}
+.tabs{display:flex;gap:0;background:var(--s1);border-bottom:1px solid var(--border);overflow-x:auto;position:sticky;top:0;z-index:100;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:700;color:var(--muted);background:none;border:none;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:all .25s}
+.tab:hover{color:var(--text)}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tc{display:none;padding:28px 20px;max-width:940px;margin:0 auto}
+.tc.active{display:block}
+.badge{display:inline-flex;padding:3px 12px;border-radius:16px;font-size:.7rem;font-weight:700;letter-spacing:.6px;text-transform:uppercase;margin-bottom:10px}
+.bg{background:rgba(0,229,153,.12);color:var(--accent)}
+.bb{background:rgba(0,184,255,.12);color:var(--accent2)}
+.bo{background:rgba(255,140,66,.12);color:var(--orange)}
+.bp{background:rgba(179,136,255,.12);color:var(--purple)}
+.by{background:rgba(255,209,102,.12);color:var(--yellow)}
+h2{font-size:1.5rem;font-weight:800;color:var(--white);margin-bottom:18px}
+h3{font-size:1.1rem;font-weight:700;color:var(--white);margin:24px 0 10px}
+.card{background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:22px;margin-bottom:18px;transition:border-color .3s}
+.card:hover{border-color:rgba(0,229,153,.25)}
+.ct{font-size:1rem;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.ct .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:7px;font-size:.75rem;font-weight:700;flex-shrink:0}
+.ng{background:rgba(0,229,153,.18);color:var(--accent)}
+.nb{background:rgba(0,184,255,.18);color:var(--accent2)}
+.no{background:rgba(255,140,66,.18);color:var(--orange)}
+.np{background:rgba(179,136,255,.18);color:var(--purple)}
+.q{font-weight:600;color:var(--accent);margin-bottom:6px;font-size:.93rem}
+.a{color:var(--text);font-size:.9rem;line-height:1.78}
+.a strong{color:var(--white)}
+pre{background:#080d18;border:1px solid var(--border);border-radius:8px;padding:16px;overflow-x:auto;margin:12px 0;font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.65;color:#c9d1d9}
+.kw{color:#ff7b72}.ty{color:#79c0ff}.st{color:#a5d6ff}.cm{color:#6e7a8a;font-style:italic}.fn{color:#d2a8ff}.nl{color:#79c0ff}.an{color:#ffa657}
+.tip{background:rgba(0,229,153,.05);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:14px 18px;margin:18px 0;font-size:.88rem}
+.tip strong{color:var(--accent)}
+.cx{display:inline-flex;gap:10px;padding:4px 12px;background:rgba(0,184,255,.07);border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--accent2);margin:6px 0}
+.folder{background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:16px;margin:12px 0;font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.8;color:var(--muted)}
+.folder strong{color:var(--accent)}
+.divider{height:1px;background:var(--border);margin:28px 0}
+.tag{display:inline-block;padding:2px 8px;border-radius:5px;font-size:.7rem;font-weight:700;margin-right:4px;margin-bottom:4px}
+.t-java{background:rgba(255,140,66,.12);color:var(--orange)}
+.t-js{background:rgba(255,209,102,.12);color:var(--yellow)}
+.t-api{background:rgba(179,136,255,.12);color:var(--purple)}
+.t-se{background:rgba(0,229,153,.12);color:var(--accent)}
+.t-pw{background:rgba(0,184,255,.12);color:var(--accent2)}
+.t-amz{background:rgba(255,153,0,.15);color:#ff9900}
+.t-ggl{background:rgba(66,133,244,.15);color:#4285f4}
+.t-ms{background:rgba(0,120,215,.15);color:#0078d7}
+.t-del{background:rgba(134,188,37,.15);color:#86bc25}
+.t-apl{background:rgba(169,169,169,.15);color:#c0c0c0}
+.t-meta{background:rgba(24,119,242,.15);color:#1877f2}
+.exp{display:inline-block;padding:2px 8px;border-radius:5px;font-size:.68rem;font-weight:700;margin-left:4px}
+.exp-jr{background:rgba(0,229,153,.12);color:var(--accent)}
+.exp-mid{background:rgba(255,209,102,.12);color:var(--yellow)}
+.exp-sr{background:rgba(255,92,92,.12);color:var(--red)}
+.diff{display:inline-block;padding:1px 7px;border-radius:4px;font-size:.67rem;font-weight:700;margin-left:4px}
+.diff-e{background:rgba(0,229,153,.12);color:var(--accent)}
+.diff-m{background:rgba(255,209,102,.12);color:var(--yellow)}
+.diff-h{background:rgba(255,92,92,.12);color:var(--red)}
+@media(max-width:600px){.tab{padding:11px 12px;font-size:.76rem}.tc{padding:22px 14px}.card{padding:16px}pre{font-size:.72rem;padding:12px}}
+
+/* Diagonal watermark on every tab */
+.tc::before{
+  content:'© Karthik_Knowledge Hub';
+  position:fixed;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(-35deg);
+  font-size:clamp(2rem,6vw,4.5rem);
+  font-weight:800;
+  color:rgba(0,229,153,.04);
+  pointer-events:none;
+  white-space:nowrap;
+  z-index:0;
+  letter-spacing:2px;
+}
+.tc>*{position:relative;z-index:1}
+
+/* Footer */
+.footer{
+  text-align:center;
+  padding:28px 20px;
+  border-top:1px solid var(--border);
+  background:var(--s1);
+  font-size:.8rem;
+  color:var(--muted);
+}
+.footer a{color:var(--accent);text-decoration:none}
+.footer a:hover{text-decoration:underline}
+.footer .copy-shield{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 16px;border-radius:20px;
+  background:rgba(0,229,153,.08);
+  border:1px solid rgba(0,229,153,.15);
+  color:var(--accent);font-weight:700;font-size:.82rem;
+  margin-bottom:10px;
+}
+.footer .copy-shield svg{width:16px;height:16px;fill:var(--accent)}
+
+/* Copyright badge in hero */
+.hero-copy{
+  display:inline-flex;align-items:center;gap:5px;
+  margin-top:10px;padding:4px 14px;border-radius:14px;
+  background:rgba(0,229,153,.08);border:1px solid rgba(0,229,153,.12);
+  font-size:.72rem;font-weight:700;color:var(--accent);
+  position:relative;letter-spacing:.3px;
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+<h1>SDET & QA Automation Engineer</h1>
+<p>Interview Questions • Framework Design • Build From Scratch • Parallel Execution</p>
+<p style="margin-top:6px;font-size:.8rem;color:var(--accent)">By Karthik_Knowledge Hub</p>
+<div class="hero-copy">© 2026 Karthik_Knowledge Hub — All Rights Reserved</div>
+</div>
+
+<div class="tabs">
+<button class="tab active" onclick="st('t1',this)">🧪 Coding Q&A</button>
+<button class="tab" onclick="st('t2',this)">🏗️ Framework Design</button>
+<button class="tab" onclick="st('t3',this)">☕ Java+Selenium</button>
+<button class="tab" onclick="st('t4',this)">🎭 JS+Playwright</button>
+<button class="tab" onclick="st('t5',this)">🔌 API+Cucumber</button>
+<button class="tab" onclick="st('t6',this)">⚡ Parallel Execution</button>
+</div>
+
+<!-- ===== TAB 1: CODING ===== -->
+<div id="t1" class="tc active">
+<span class="badge bg">SECTION 1</span>
+<h2>Most Asked SDET Coding Questions with Solutions</h2>
+<p style="color:var(--muted);margin-bottom:20px">Java solutions for the top coding problems asked in SDET interviews at Amazon, Deloitte, Google, Microsoft, and product companies.</p>
+
+<div class="card">
+<div class="ct"><span class="n ng">1</span> Reverse a String Without Built-in Methods</div>
+<span class="tag t-java">Java</span><span class="tag t-del">Deloitte</span><span class="tag t-amz">Amazon</span><span class="diff diff-e">Easy</span><span class="exp exp-jr">0-2 YOE</span>
+<div class="cx">Time: O(n) | Space: O(n)</div>
+<pre><span class="kw">public static</span> String <span class="fn">reverse</span>(String s) {
+    <span class="ty">char</span>[] chars = s.toCharArray();
+    <span class="ty">int</span> left = <span class="nl">0</span>, right = chars.length - <span class="nl">1</span>;
+    <span class="kw">while</span> (left &lt; right) {
+        <span class="ty">char</span> temp = chars[left];
+        chars[left++] = chars[right];
+        chars[right--] = temp;
+    }
+    <span class="kw">return new</span> String(chars);
+}</pre>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n ng">2</span> Check if String is Palindrome</div>
+<span class="tag t-java">Java</span><span class="tag t-del">Deloitte</span><span class="tag t-ms">Microsoft</span><span class="diff diff-e">Easy</span><span class="exp exp-jr">0-2 YOE</span>
+<div class="cx">Time: O(n) | Space: O(1)</div>
+<pre><span class="kw">public static boolean</span> <span class="fn">isPalindrome</span>(String s) {
+    <span class="ty">int</span> l = <span class="nl">0</span>, r = s.length() - <span class="nl">1</span>;
+    <span class="kw">while</span> (l &lt; r) {
+        <span class="kw">if</span> (s.charAt(l++) != s.charAt(r--)) <span class="kw">return false</span>;
+    }
+    <span class="kw">return true</span>;
+}</pre>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n ng">3</span> Remove Duplicates from ArrayList</div>
+<span class="tag t-java">Java</span><span class="tag t-del">Deloitte</span><span class="tag t-amz">Amazon</span><span class="diff diff-e">Easy</span><span class="exp exp-jr">0-3 YOE</span>
+<pre><span class="cm">// Method 1: Using LinkedHashSet (preserves order)</span>
+List&lt;Integer&gt; list = <span class="kw">new</span> ArrayList&lt;&gt;(Arrays.asList(<span class="nl">1,2,3,2,4,3,5</span>));
+List&lt;Integer&gt; unique = <span class="kw">new</span> ArrayList&lt;&gt;(<span class="kw">new</span> LinkedHashSet&lt;&gt;(list));
+<span class="cm">// Result: [1, 2, 3, 4, 5]</span>
+
+<span class="cm">// Method 2: Using Java Streams</span>
+List&lt;Integer&gt; unique2 = list.stream().distinct().collect(Collectors.toList());</pre>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n ng">4</span> Sort a HashMap by Values</div>
+<span class="tag t-java">Java</span><span class="tag t-amz">Amazon</span><span class="tag t-ms">Microsoft</span><span class="diff diff-m">Medium</span><span class="exp exp-mid">2-5 YOE</span>
+<pre>Map&lt;String, Integer&gt; map = <span class="kw">new</span> HashMap&lt;&gt;();
+map.put(<span class="st">"Selenium"</span>, <span class="nl">3</span>);
+map.put(<span class="st">"Playwright"</span>, <span class="nl">1</span>);
+map.put(<span class="st">"Cypress"</span>, <span class="nl">2</span>);
+
+Map&lt;String, Integer&gt; sorted = map.entrySet().stream()
+    .sorted(Map.Entry.comparingByValue())
+    .collect(Collectors.toMap(
+        Map.Entry::getKey, Map.Entry::getValue,
+        (e1, e2) -> e1, LinkedHashMap::<span class="kw">new</span>));
+<span class="cm">// {Playwright=1, Cypress=2, Selenium=3}</span></pre>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n ng">5</span> Find Duplicates in an Array</div>
+<span class="tag t-java">Java</span><span class="tag t-amz">Amazon</span><span class="tag t-ggl">Google</span><span class="diff diff-e">Easy</span><span class="exp exp-jr">0-3 YOE</span>
+<div class="cx">Time: O(n) | Space: O(n)</div>
+<pre><span class="kw">public static</span> List&lt;Integer&gt; <span class="fn">findDuplicates</span>(<span class="ty">int</span>[] arr) {
+    Set&lt;Integer&gt; seen = <span class="kw">new</span> HashSet&lt;&gt;();
+    Set&lt;Integer&gt; duplicates = <span class="kw">new</span> LinkedHashSet&lt;&gt;();
+    <span class="kw">for</span> (<span class="ty">int</span> num : arr) {
+        <span class="kw">if</span> (!seen.add(num)) duplicates.add(num);
+    }
+    <span class="kw">return new</span> ArrayList&lt;&gt;(duplicates);
+}</pre>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n ng">6</span> Two Sum (HashMap Approach)</div>
+<span class="tag t-java">Java</span><span class="tag t-amz">Amazon</span><span class="tag t-ggl">Google</span><span class="tag t-meta">Meta</span><span class="diff diff-e">Easy</span><span class="exp exp-jr">0-3 YOE</span>
+<div class="cx">Time: O(n) | Space: O(n)</div>
+<pre><span class="kw">public static int</span>[] <span class="fn">twoSum</span>(<span class="ty">int</span>[] nums, <span class="ty">int</span> target) {
+    Map&lt;Integer, Integer&gt; map = <span class="kw">new</span> HashMap&lt;&gt;();
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nl">0</span>; i &lt; nums.length; i++) {
+        <span class="ty">int</span> complement = target - nums[i];
+        <span class="kw">if</span> (map.containsKey(complement))
+            <span class="kw">return new int</span>[]{map.get(complement), i};
+        map.put(nums[i], i);
+    }
+    <span class="kw">return new int</span>[]{};
+}</pre>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n ng">7</span> Swap Two Numbers Without Temp Variable</div>
+<span class="tag t-java">Java</span><span class="tag t-del">Deloitte</span><span class="diff diff-e">Easy</span><span class="exp exp-jr">0-2 YOE</span>
+<pre><span class="ty">int</span> a = <span class="nl">5</span>, b = <span class="nl">10</span>;
+a = a ^ b;  <span class="cm">// a = 15 (XOR)</span>
+b = a ^ b;  <span class="cm">// b = 5 (original a)</span>
+a = a ^ b;  <span class="cm">// a = 10 (original b)</span></pre>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n ng">8</span> Verify Broken Links on a Webpage (Selenium)</div>
+<span class="tag t-java">Java</span><span class="tag t-se">Selenium</span><span class="tag t-del">Deloitte</span><span class="tag t-amz">Amazon</span><span class="diff diff-m">Medium</span><span class="exp exp-mid">2-5 YOE</span>
+<pre>List&lt;WebElement&gt; links = driver.findElements(By.tagName(<span class="st">"a"</span>));
+<span class="kw">for</span> (WebElement link : links) {
+    String url = link.getAttribute(<span class="st">"href"</span>);
+    <span class="kw">if</span> (url == <span class="kw">null</span> || url.isEmpty()) <span class="kw">continue</span>;
+    <span class="kw">try</span> {
+        HttpURLConnection conn = (HttpURLConnection)
+            <span class="kw">new</span> URL(url).openConnection();
+        conn.setRequestMethod(<span class="st">"HEAD"</span>);
+        conn.setConnectTimeout(<span class="nl">3000</span>);
+        conn.connect();
+        <span class="ty">int</span> code = conn.getResponseCode();
+        <span class="kw">if</span> (code >= <span class="nl">400</span>)
+            System.out.println(<span class="st">"BROKEN: "</span> + url + <span class="st">" → "</span> + code);
+    } <span class="kw">catch</span> (Exception e) {
+        System.out.println(<span class="st">"ERROR: "</span> + url);
+    }
+}</pre>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n ng">9</span> Balanced Parentheses (Stack)</div>
+<span class="tag t-java">Java</span><span class="tag t-amz">Amazon</span><span class="tag t-ms">Microsoft</span><span class="tag t-ggl">Google</span><span class="diff diff-e">Easy</span><span class="exp exp-jr">0-3 YOE</span>
+<div class="cx">Time: O(n) | Space: O(n)</div>
+<pre><span class="kw">public static boolean</span> <span class="fn">isValid</span>(String s) {
+    Stack&lt;Character&gt; stack = <span class="kw">new</span> Stack&lt;&gt;();
+    <span class="kw">for</span> (<span class="ty">char</span> c : s.toCharArray()) {
+        <span class="kw">if</span> (c == <span class="st">'('</span>) stack.push(<span class="st">')'</span>);
+        <span class="kw">else if</span> (c == <span class="st">'{'</span>) stack.push(<span class="st">'}'</span>);
+        <span class="kw">else if</span> (c == <span class="st">'['</span>) stack.push(<span class="st">']'</span>);
+        <span class="kw">else if</span> (stack.isEmpty() || stack.pop() != c)
+            <span class="kw">return false</span>;
+    }
+    <span class="kw">return</span> stack.isEmpty();
+}</pre>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n ng">10</span> FizzBuzz (Classic SDET Warm-up)</div>
+<span class="tag t-java">Java</span><span class="tag t-del">Deloitte</span><span class="diff diff-e">Easy</span><span class="exp exp-jr">0-1 YOE</span>
+<pre><span class="kw">for</span> (<span class="ty">int</span> i = <span class="nl">1</span>; i &lt;= <span class="nl">100</span>; i++) {
+    <span class="kw">if</span> (i % <span class="nl">15</span> == <span class="nl">0</span>)      System.out.println(<span class="st">"FizzBuzz"</span>);
+    <span class="kw">else if</span> (i % <span class="nl">3</span> == <span class="nl">0</span>) System.out.println(<span class="st">"Fizz"</span>);
+    <span class="kw">else if</span> (i % <span class="nl">5</span> == <span class="nl">0</span>) System.out.println(<span class="st">"Buzz"</span>);
+    <span class="kw">else</span>                  System.out.println(i);
+}</pre>
+</div>
+
+<div class="divider"></div>
+<h3>🔥 Medium & Hard — Senior SDET / FAANG Level</h3>
+
+<div class="card">
+<div class="ct"><span class="n ng">11</span> Linked List Palindrome Check (No Extra Space)</div>
+<span class="tag t-java">Java</span><span class="tag t-amz">Amazon SDET-1</span><span class="diff diff-m">Medium</span><span class="exp exp-mid">2-5 YOE</span>
+<div class="cx">Time: O(n) | Space: O(1)</div>
+<pre><span class="kw">public boolean</span> <span class="fn">isPalindrome</span>(ListNode head) {
+    <span class="cm">// 1. Find middle using slow/fast pointers</span>
+    ListNode slow = head, fast = head;
+    <span class="kw">while</span> (fast != <span class="kw">null</span> && fast.next != <span class="kw">null</span>) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    <span class="cm">// 2. Reverse second half</span>
+    ListNode prev = <span class="kw">null</span>;
+    <span class="kw">while</span> (slow != <span class="kw">null</span>) {
+        ListNode next = slow.next;
+        slow.next = prev;
+        prev = slow;
+        slow = next;
+    }
+    <span class="cm">// 3. Compare first half with reversed second half</span>
+    ListNode left = head, right = prev;
+    <span class="kw">while</span> (right != <span class="kw">null</span>) {
+        <span class="kw">if</span> (left.val != right.val) <span class="kw">return false</span>;
+        left = left.next;
+        right = right.next;
+    }
+    <span class="kw">return true</span>;
+}</pre>
+<div class="a"><strong>Key:</strong> Find middle → reverse second half in-place → compare. No extra list/array. This exact problem was asked in Amazon SDET-1 Chennai interview.</div>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n ng">12</span> Mirror / Invert a Binary Tree</div>
+<span class="tag t-java">Java</span><span class="tag t-amz">Amazon SDET</span><span class="tag t-ms">Microsoft</span><span class="diff diff-e">Easy</span><span class="exp exp-mid">2-4 YOE</span>
+<pre><span class="kw">public</span> TreeNode <span class="fn">invertTree</span>(TreeNode root) {
+    <span class="kw">if</span> (root == <span class="kw">null</span>) <span class="kw">return null</span>;
+    TreeNode temp = root.left;
+    root.left = <span class="fn">invertTree</span>(root.right);
+    root.right = <span class="fn">invertTree</span>(temp);
+    <span class="kw">return</span> root;
+}</pre>
+<div class="a">Asked at Amazon SDET and Microsoft SDE-II. Simple recursion — swap left and right children at every node.</div>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n ng">13</span> Binary Tree Level Order Traversal (BFS)</div>
+<span class="tag t-java">Java</span><span class="tag t-amz">Amazon</span><span class="tag t-ms">Microsoft</span><span class="tag t-ggl">Google</span><span class="diff diff-m">Medium</span><span class="exp exp-mid">2-5 YOE</span>
+<div class="cx">Time: O(n) | Space: O(n)</div>
+<pre><span class="kw">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="fn">levelOrder</span>(TreeNode root) {
+    List&lt;List&lt;Integer&gt;&gt; result = <span class="kw">new</span> ArrayList&lt;&gt;();
+    <span class="kw">if</span> (root == <span class="kw">null</span>) <span class="kw">return</span> result;
+    Queue&lt;TreeNode&gt; queue = <span class="kw">new</span> LinkedList&lt;&gt;();
+    queue.offer(root);
+    <span class="kw">while</span> (!queue.isEmpty()) {
+        <span class="ty">int</span> size = queue.size();
+        List&lt;Integer&gt; level = <span class="kw">new</span> ArrayList&lt;&gt;();
+        <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nl">0</span>; i &lt; size; i++) {
+            TreeNode node = queue.poll();
+            level.add(node.val);
+            <span class="kw">if</span> (node.left != <span class="kw">null</span>) queue.offer(node.left);
+            <span class="kw">if</span> (node.right != <span class="kw">null</span>) queue.offer(node.right);
+        }
+        result.add(level);
+    }
+    <span class="kw">return</span> result;
+}</pre>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n ng">14</span> Rotate 2D Matrix by 90° (In-Place)</div>
+<span class="tag t-java">Java</span><span class="tag t-amz">Amazon SDET-1</span><span class="tag t-ms">Microsoft</span><span class="tag t-meta">Meta</span><span class="diff diff-m">Medium</span><span class="exp exp-mid">3-5 YOE</span>
+<div class="cx">Time: O(n²) | Space: O(1)</div>
+<pre><span class="kw">public void</span> <span class="fn">rotate</span>(<span class="ty">int</span>[][] matrix) {
+    <span class="ty">int</span> n = matrix.length;
+    <span class="cm">// Step 1: Transpose (swap rows with columns)</span>
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nl">0</span>; i &lt; n; i++)
+        <span class="kw">for</span> (<span class="ty">int</span> j = i + <span class="nl">1</span>; j &lt; n; j++) {
+            <span class="ty">int</span> temp = matrix[i][j];
+            matrix[i][j] = matrix[j][i];
+            matrix[j][i] = temp;
+        }
+    <span class="cm">// Step 2: Reverse each row</span>
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nl">0</span>; i &lt; n; i++) {
+        <span class="ty">int</span> l = <span class="nl">0</span>, r = n - <span class="nl">1</span>;
+        <span class="kw">while</span> (l &lt; r) {
+            <span class="ty">int</span> temp = matrix[i][l];
+            matrix[i][l++] = matrix[i][r];
+            matrix[i][r--] = temp;
+        }
+    }
+}</pre>
+<div class="a"><strong>Trick:</strong> Transpose + Reverse each row = 90° clockwise rotation. This was asked in Amazon SDET-1 coding round.</div>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n ng">15</span> Detect Cycle in Linked List</div>
+<span class="tag t-java">Java</span><span class="tag t-ms">Microsoft</span><span class="tag t-amz">Amazon</span><span class="tag t-ggl">Google</span><span class="diff diff-e">Easy</span><span class="exp exp-jr">1-3 YOE</span>
+<pre><span class="kw">public boolean</span> <span class="fn">hasCycle</span>(ListNode head) {
+    ListNode slow = head, fast = head;
+    <span class="kw">while</span> (fast != <span class="kw">null</span> && fast.next != <span class="kw">null</span>) {
+        slow = slow.next;
+        fast = fast.next.next;
+        <span class="kw">if</span> (slow == fast) <span class="kw">return true</span>;
+    }
+    <span class="kw">return false</span>;
+}</pre>
+<div class="a"><strong>Floyd's Tortoise & Hare.</strong> Microsoft asked this as a warm-up in SDE interviews. O(1) space, O(n) time.</div>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n ng">16</span> Longest Substring Without Repeating Characters</div>
+<span class="tag t-java">Java</span><span class="tag t-amz">Amazon</span><span class="tag t-ggl">Google</span><span class="tag t-meta">Meta</span><span class="tag t-ms">Microsoft</span><span class="diff diff-m">Medium</span><span class="exp exp-mid">3-6 YOE</span>
+<div class="cx">Time: O(n) | Space: O(min(n, 128))</div>
+<pre><span class="kw">public int</span> <span class="fn">lengthOfLongestSubstring</span>(String s) {
+    Map&lt;Character, Integer&gt; map = <span class="kw">new</span> HashMap&lt;&gt;();
+    <span class="ty">int</span> maxLen = <span class="nl">0</span>, left = <span class="nl">0</span>;
+    <span class="kw">for</span> (<span class="ty">int</span> right = <span class="nl">0</span>; right &lt; s.length(); right++) {
+        <span class="ty">char</span> c = s.charAt(right);
+        <span class="kw">if</span> (map.containsKey(c))
+            left = Math.max(left, map.get(c) + <span class="nl">1</span>);
+        map.put(c, right);
+        maxLen = Math.max(maxLen, right - left + <span class="nl">1</span>);
+    }
+    <span class="kw">return</span> maxLen;
+}</pre>
+<div class="a"><strong>Sliding Window + HashMap.</strong> Classic FAANG SDET question. Maintain a window with no duplicates — shrink from left when duplicate found.</div>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n ng">17</span> Maximum Subarray Sum (Kadane's Algorithm)</div>
+<span class="tag t-java">Java</span><span class="tag t-ms">Microsoft</span><span class="tag t-amz">Amazon</span><span class="diff diff-m">Medium</span><span class="exp exp-mid">2-5 YOE</span>
+<div class="cx">Time: O(n) | Space: O(1)</div>
+<pre><span class="kw">public int</span> <span class="fn">maxSubArray</span>(<span class="ty">int</span>[] nums) {
+    <span class="ty">int</span> maxSum = nums[<span class="nl">0</span>], curSum = nums[<span class="nl">0</span>];
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nl">1</span>; i &lt; nums.length; i++) {
+        curSum = Math.max(nums[i], curSum + nums[i]);
+        maxSum = Math.max(maxSum, curSum);
+    }
+    <span class="kw">return</span> maxSum;
+}</pre>
+<div class="a"><strong>Kadane's:</strong> At each index, either start a new subarray or extend the current one. Microsoft Round 2 frequently asks this.</div>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n ng">18</span> First Non-Repeating Character in String</div>
+<span class="tag t-java">Java</span><span class="tag t-ms">Microsoft</span><span class="tag t-ggl">Google</span><span class="diff diff-e">Easy</span><span class="exp exp-jr">1-3 YOE</span>
+<pre><span class="kw">public char</span> <span class="fn">firstUniqChar</span>(String s) {
+    Map&lt;Character, Integer&gt; freq = <span class="kw">new</span> LinkedHashMap&lt;&gt;();
+    <span class="kw">for</span> (<span class="ty">char</span> c : s.toCharArray())
+        freq.put(c, freq.getOrDefault(c, <span class="nl">0</span>) + <span class="nl">1</span>);
+    <span class="kw">for</span> (Map.Entry&lt;Character, Integer&gt; e : freq.entrySet())
+        <span class="kw">if</span> (e.getValue() == <span class="nl">1</span>) <span class="kw">return</span> e.getKey();
+    <span class="kw">return</span> <span class="st">'_'</span>; <span class="cm">// no unique char</span>
+}</pre>
+<div class="a">Microsoft SDE Round 1 question. Use LinkedHashMap to preserve insertion order + count frequencies in one pass.</div>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n ng">19</span> Merge Two Sorted Linked Lists</div>
+<span class="tag t-java">Java</span><span class="tag t-amz">Amazon</span><span class="tag t-ms">Microsoft</span><span class="diff diff-e">Easy</span><span class="exp exp-jr">1-3 YOE</span>
+<pre><span class="kw">public</span> ListNode <span class="fn">mergeTwoLists</span>(ListNode l1, ListNode l2) {
+    ListNode dummy = <span class="kw">new</span> ListNode(<span class="nl">0</span>);
+    ListNode curr = dummy;
+    <span class="kw">while</span> (l1 != <span class="kw">null</span> && l2 != <span class="kw">null</span>) {
+        <span class="kw">if</span> (l1.val &lt;= l2.val) {
+            curr.next = l1; l1 = l1.next;
+        } <span class="kw">else</span> {
+            curr.next = l2; l2 = l2.next;
+        }
+        curr = curr.next;
+    }
+    curr.next = (l1 != <span class="kw">null</span>) ? l1 : l2;
+    <span class="kw">return</span> dummy.next;
+}</pre>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n ng">20</span> 3Sum — Find All Triplets Summing to Zero</div>
+<span class="tag t-java">Java</span><span class="tag t-ggl">Google</span><span class="tag t-meta">Meta</span><span class="tag t-amz">Amazon</span><span class="diff diff-m">Medium</span><span class="exp exp-mid">3-6 YOE</span>
+<div class="cx">Time: O(n²) | Space: O(1) excl output</div>
+<pre><span class="kw">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="fn">threeSum</span>(<span class="ty">int</span>[] nums) {
+    Arrays.sort(nums);
+    List&lt;List&lt;Integer&gt;&gt; res = <span class="kw">new</span> ArrayList&lt;&gt;();
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nl">0</span>; i &lt; nums.length - <span class="nl">2</span>; i++) {
+        <span class="kw">if</span> (i > <span class="nl">0</span> && nums[i] == nums[i - <span class="nl">1</span>]) <span class="kw">continue</span>; <span class="cm">// skip dupes</span>
+        <span class="ty">int</span> lo = i + <span class="nl">1</span>, hi = nums.length - <span class="nl">1</span>;
+        <span class="kw">while</span> (lo &lt; hi) {
+            <span class="ty">int</span> sum = nums[i] + nums[lo] + nums[hi];
+            <span class="kw">if</span> (sum == <span class="nl">0</span>) {
+                res.add(Arrays.asList(nums[i], nums[lo], nums[hi]));
+                <span class="kw">while</span> (lo &lt; hi && nums[lo] == nums[lo+<span class="nl">1</span>]) lo++;
+                <span class="kw">while</span> (lo &lt; hi && nums[hi] == nums[hi-<span class="nl">1</span>]) hi--;
+                lo++; hi--;
+            } <span class="kw">else if</span> (sum &lt; <span class="nl">0</span>) lo++;
+            <span class="kw">else</span> hi--;
+        }
+    }
+    <span class="kw">return</span> res;
+}</pre>
+<div class="a"><strong>Sort + Two Pointers.</strong> Fix one element, then use two pointers on the remaining sorted array. Skip duplicates carefully. Top FAANG SDET question.</div>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n ng">21</span> LRU Cache Implementation</div>
+<span class="tag t-java">Java</span><span class="tag t-amz">Amazon</span><span class="tag t-ggl">Google</span><span class="tag t-ms">Microsoft</span><span class="diff diff-m">Medium</span><span class="exp exp-sr">5+ YOE</span>
+<div class="cx">Time: O(1) get/put | Space: O(capacity)</div>
+<pre><span class="kw">class</span> <span class="ty">LRUCache</span> <span class="kw">extends</span> LinkedHashMap&lt;Integer, Integer&gt; {
+    <span class="kw">private int</span> capacity;
+
+    <span class="kw">public</span> <span class="fn">LRUCache</span>(<span class="ty">int</span> capacity) {
+        <span class="kw">super</span>(capacity, <span class="nl">0.75f</span>, <span class="kw">true</span>); <span class="cm">// accessOrder=true</span>
+        <span class="kw">this</span>.capacity = capacity;
+    }
+
+    <span class="kw">public int</span> <span class="fn">get</span>(<span class="ty">int</span> key) {
+        <span class="kw">return super</span>.getOrDefault(key, -<span class="nl">1</span>);
+    }
+
+    <span class="kw">public void</span> <span class="fn">put</span>(<span class="ty">int</span> key, <span class="ty">int</span> value) {
+        <span class="kw">super</span>.put(key, value);
+    }
+
+    <span class="an">@Override</span>
+    <span class="kw">protected boolean</span> <span class="fn">removeEldestEntry</span>(Map.Entry e) {
+        <span class="kw">return</span> size() > capacity;
+    }
+}</pre>
+<div class="a"><strong>Amazon SDET VO variant.</strong> LinkedHashMap with accessOrder=true handles LRU ordering. Override removeEldestEntry for eviction. For interviews, also know the manual DoublyLinkedList + HashMap approach.</div>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n ng">22</span> Number of Islands (Graph/DFS)</div>
+<span class="tag t-java">Java</span><span class="tag t-amz">Amazon</span><span class="tag t-ggl">Google</span><span class="tag t-meta">Meta</span><span class="diff diff-m">Medium</span><span class="exp exp-mid">3-6 YOE</span>
+<div class="cx">Time: O(m×n) | Space: O(m×n)</div>
+<pre><span class="kw">public int</span> <span class="fn">numIslands</span>(<span class="ty">char</span>[][] grid) {
+    <span class="ty">int</span> count = <span class="nl">0</span>;
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nl">0</span>; i &lt; grid.length; i++)
+        <span class="kw">for</span> (<span class="ty">int</span> j = <span class="nl">0</span>; j &lt; grid[<span class="nl">0</span>].length; j++)
+            <span class="kw">if</span> (grid[i][j] == <span class="st">'1'</span>) { count++; <span class="fn">dfs</span>(grid, i, j); }
+    <span class="kw">return</span> count;
+}
+<span class="kw">void</span> <span class="fn">dfs</span>(<span class="ty">char</span>[][] g, <span class="ty">int</span> i, <span class="ty">int</span> j) {
+    <span class="kw">if</span> (i&lt;<span class="nl">0</span>||i>=g.length||j&lt;<span class="nl">0</span>||j>=g[<span class="nl">0</span>].length||g[i][j]==<span class="st">'0'</span>) <span class="kw">return</span>;
+    g[i][j] = <span class="st">'0'</span>;
+    <span class="fn">dfs</span>(g,i+<span class="nl">1</span>,j); <span class="fn">dfs</span>(g,i-<span class="nl">1</span>,j); <span class="fn">dfs</span>(g,i,j+<span class="nl">1</span>); <span class="fn">dfs</span>(g,i,j-<span class="nl">1</span>);
+}</pre>
+<div class="a"><strong>Classic FAANG graph problem.</strong> Each DFS flood-fills one island. Count how many times DFS is triggered from a '1' cell.</div>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n ng">23</span> Spiral Matrix Traversal</div>
+<span class="tag t-java">Java</span><span class="tag t-ms">Microsoft</span><span class="tag t-amz">Amazon</span><span class="tag t-apl">Apple</span><span class="diff diff-m">Medium</span><span class="exp exp-mid">3-5 YOE</span>
+<div class="cx">Time: O(m×n) | Space: O(1) excl output</div>
+<pre><span class="kw">public</span> List&lt;Integer&gt; <span class="fn">spiralOrder</span>(<span class="ty">int</span>[][] matrix) {
+    List&lt;Integer&gt; res = <span class="kw">new</span> ArrayList&lt;&gt;();
+    <span class="ty">int</span> top = <span class="nl">0</span>, bottom = matrix.length - <span class="nl">1</span>;
+    <span class="ty">int</span> left = <span class="nl">0</span>, right = matrix[<span class="nl">0</span>].length - <span class="nl">1</span>;
+    <span class="kw">while</span> (top &lt;= bottom && left &lt;= right) {
+        <span class="kw">for</span> (<span class="ty">int</span> j = left; j &lt;= right; j++) res.add(matrix[top][j]);
+        top++;
+        <span class="kw">for</span> (<span class="ty">int</span> i = top; i &lt;= bottom; i++) res.add(matrix[i][right]);
+        right--;
+        <span class="kw">if</span> (top &lt;= bottom) {
+            <span class="kw">for</span> (<span class="ty">int</span> j = right; j >= left; j--) res.add(matrix[bottom][j]);
+            bottom--;
+        }
+        <span class="kw">if</span> (left &lt;= right) {
+            <span class="kw">for</span> (<span class="ty">int</span> i = bottom; i >= top; i--) res.add(matrix[i][left]);
+            left++;
+        }
+    }
+    <span class="kw">return</span> res;
+}</pre>
+<div class="a"><strong>Layer-by-layer traversal.</strong> Maintain 4 boundaries (top, bottom, left, right) and shrink after each direction. Microsoft and Apple SDET favorite.</div>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n ng">24</span> Producer-Consumer Pattern (Multithreading)</div>
+<span class="tag t-java">Java</span><span class="tag t-amz">Amazon</span><span class="tag t-ms">Microsoft</span><span class="diff diff-h">Hard</span><span class="exp exp-sr">5+ YOE</span>
+<pre><span class="kw">class</span> <span class="ty">BoundedBuffer</span>&lt;T&gt; {
+    <span class="kw">private final</span> Queue&lt;T&gt; queue = <span class="kw">new</span> LinkedList&lt;&gt;();
+    <span class="kw">private final int</span> capacity;
+
+    <span class="kw">public</span> <span class="fn">BoundedBuffer</span>(<span class="ty">int</span> capacity) { <span class="kw">this</span>.capacity = capacity; }
+
+    <span class="kw">public synchronized void</span> <span class="fn">produce</span>(T item)
+            <span class="kw">throws</span> InterruptedException {
+        <span class="kw">while</span> (queue.size() == capacity) wait();
+        queue.add(item);
+        notifyAll();
+    }
+
+    <span class="kw">public synchronized</span> T <span class="fn">consume</span>()
+            <span class="kw">throws</span> InterruptedException {
+        <span class="kw">while</span> (queue.isEmpty()) wait();
+        T item = queue.poll();
+        notifyAll();
+        <span class="kw">return</span> item;
+    }
+}</pre>
+<div class="a"><strong>Senior SDET must-know.</strong> Demonstrates thread synchronization, wait/notify, and bounded buffers. Critical for understanding parallel test execution internals. Amazon and Microsoft ask this for senior SDET roles.</div>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n ng">25</span> Serialize & Deserialize Binary Tree</div>
+<span class="tag t-java">Java</span><span class="tag t-ggl">Google</span><span class="tag t-amz">Amazon</span><span class="diff diff-h">Hard</span><span class="exp exp-sr">5+ YOE</span>
+<div class="cx">Time: O(n) | Space: O(n)</div>
+<pre><span class="kw">public</span> String <span class="fn">serialize</span>(TreeNode root) {
+    <span class="kw">if</span> (root == <span class="kw">null</span>) <span class="kw">return</span> <span class="st">"null"</span>;
+    <span class="kw">return</span> root.val + <span class="st">","</span> + <span class="fn">serialize</span>(root.left)
+                     + <span class="st">","</span> + <span class="fn">serialize</span>(root.right);
+}
+
+<span class="kw">public</span> TreeNode <span class="fn">deserialize</span>(String data) {
+    Queue&lt;String&gt; q = <span class="kw">new</span> LinkedList&lt;&gt;(
+        Arrays.asList(data.split(<span class="st">","</span>)));
+    <span class="kw">return</span> <span class="fn">build</span>(q);
+}
+
+<span class="kw">private</span> TreeNode <span class="fn">build</span>(Queue&lt;String&gt; q) {
+    String val = q.poll();
+    <span class="kw">if</span> (val.equals(<span class="st">"null"</span>)) <span class="kw">return null</span>;
+    TreeNode node = <span class="kw">new</span> TreeNode(Integer.parseInt(val));
+    node.left = <span class="fn">build</span>(q);
+    node.right = <span class="fn">build</span>(q);
+    <span class="kw">return</span> node;
+}</pre>
+<div class="a"><strong>Google/Amazon bar-raiser level.</strong> Pre-order traversal with null markers. Demonstrates recursion, string manipulation, and tree construction — all in one problem.</div>
+</div>
+
+<div class="tip"><strong>💡 Difficulty Guide:</strong> <span class="diff diff-e">Easy</span> = 0-2 YOE, warm-up rounds | <span class="diff diff-m">Medium</span> = 2-5 YOE, core SDET rounds | <span class="diff diff-h">Hard</span> = 5+ YOE, bar-raiser / senior rounds. Practice all levels — interviewers often start easy then escalate based on your performance.</div>
+</div>
+
+<!-- ===== TAB 2: FRAMEWORK DESIGN ===== -->
+<div id="t2" class="tc">
+<span class="badge bb">SECTION 2</span>
+<h2>Framework Design Interview Questions & Answers</h2>
+<p style="color:var(--muted);margin-bottom:20px">The most critical section — every SDET interview asks "Explain your automation framework." Here's how to answer.</p>
+
+<div class="card">
+<div class="q">Q1. What is Page Object Model (POM) and why do you use it?</div>
+<div class="a"><strong>POM</strong> is a design pattern where each web page is represented as a Java/JS class containing the page's element locators and action methods. Tests call page methods instead of directly interacting with elements.<br><br><strong>Why:</strong> If a UI element changes, you update <em>one</em> page class — not 50 test files. It gives you separation of concerns (locators vs test logic), code reusability, and readability. Example: <code>loginPage.enterUsername("admin")</code> is clearer than <code>driver.findElement(By.id("user")).sendKeys("admin")</code>.</div>
+</div>
+
+<div class="card">
+<div class="q">Q2. What design patterns do you use in your framework?</div>
+<div class="a"><strong>1. Page Object Model</strong> — separates UI locators from test logic<br>
+<strong>2. Singleton Pattern</strong> — ensures one WebDriver instance per thread (via ThreadLocal for parallel execution)<br>
+<strong>3. Factory Pattern</strong> — creates browser instances (Chrome, Firefox, Edge) based on config without exposing creation logic<br>
+<strong>4. Fluent Page Object</strong> — method chaining: <code>loginPage.enterUser("x").enterPass("y").clickLogin()</code><br>
+<strong>5. Data-Driven Pattern</strong> — separates test data from test logic using Excel/JSON/CSV/DataProviders</div>
+</div>
+
+<div class="card">
+<div class="q">Q3. Explain your framework architecture end-to-end.</div>
+<div class="a">A well-designed framework has these layers:<br><br>
+<strong>1. Config Layer</strong> — property/YAML files for URLs, browser type, timeouts, environment<br>
+<strong>2. Driver Management Layer</strong> — WebDriver factory with ThreadLocal for parallel safety<br>
+<strong>3. Page Object Layer</strong> — one class per page with locators + action methods<br>
+<strong>4. Test Layer</strong> — test classes using TestNG/JUnit/Playwright Test annotations<br>
+<strong>5. Utilities Layer</strong> — helpers for waits, screenshots, logging, data readers<br>
+<strong>6. Reporting Layer</strong> — Allure/ExtentReports/Playwright HTML reports<br>
+<strong>7. CI/CD Layer</strong> — Jenkins/GitHub Actions pipeline running tests on every commit</div>
+</div>
+
+<div class="card">
+<div class="q">Q4. How do you handle dynamic elements / flaky tests?</div>
+<div class="a"><strong>Dynamic Elements:</strong> Use robust locators — relative XPath, CSS with attributes, data-testid. Avoid absolute XPath. Use explicit waits (WebDriverWait / auto-wait in Playwright).<br><br>
+<strong>Flaky Tests:</strong> Identify root cause first — is it timing? data dependency? environment? Then: use explicit waits instead of Thread.sleep(), ensure test data isolation, use retry mechanisms (TestNG IRetryAnalyzer / Playwright retries config), and run tests in isolated browser contexts.</div>
+</div>
+
+<div class="card">
+<div class="q">Q5. Selenium vs Playwright — when would you choose which?</div>
+<div class="a">
+<strong>Choose Selenium when:</strong> Team knows Java, existing Selenium codebase, need to support older browsers, large community support needed.<br><br>
+<strong>Choose Playwright when:</strong> Starting fresh, need built-in auto-waiting (no explicit waits), need API + UI testing in one framework, need multi-browser with single API, need faster execution via DevTools protocol (no WebDriver layer), need built-in tracing/video/screenshots.<br><br>
+<strong>Key difference:</strong> Selenium communicates via WebDriver protocol (HTTP). Playwright uses WebSocket via DevTools protocol — faster and more reliable. Playwright also provides browser context isolation out of the box.</div>
+</div>
+
+<div class="card">
+<div class="q">Q6. What is the Testing Pyramid?</div>
+<div class="a"><strong>Unit Tests (base, most)</strong> → fast, isolated, test individual functions<br>
+<strong>Integration/API Tests (middle)</strong> → test service interactions, API contracts<br>
+<strong>E2E/UI Tests (top, fewest)</strong> → test full user workflows, slowest and most brittle<br><br>
+As an SDET, you should advocate for more API tests and fewer flaky UI tests. UI tests should cover critical user journeys only. This gives faster feedback and lower maintenance cost.</div>
+</div>
+
+<div class="card">
+<div class="q">Q7. How do you handle test data management?</div>
+<div class="a"><strong>Strategies:</strong><br>
+• <strong>External files</strong> — JSON/Excel/CSV for data-driven tests<br>
+• <strong>Builder pattern</strong> — create test data objects programmatically<br>
+• <strong>API seeding</strong> — create test data via API before UI tests<br>
+• <strong>Database utilities</strong> — query/reset DB state before/after tests<br>
+• <strong>Faker libraries</strong> — generate random realistic data to avoid conflicts<br><br>
+<strong>Key principle:</strong> Each test should create its own data and clean up after itself. Never depend on data from another test.</div>
+</div>
+
+<div class="card">
+<div class="q">Q8. How do you integrate tests with CI/CD?</div>
+<div class="a"><strong>Pipeline stages:</strong><br>
+1. Code commit triggers pipeline (Jenkins/GitHub Actions/GitLab CI)<br>
+2. Build project (Maven/npm install)<br>
+3. Run unit tests → fast feedback gate<br>
+4. Run API tests → validate backend contracts<br>
+5. Run UI smoke tests → critical path validation<br>
+6. Generate reports (Allure/HTML) and publish artifacts<br>
+7. Notify team via Slack/email on failure<br><br>
+<strong>Best practice:</strong> Run full regression nightly, smoke suite on every PR. Use Docker for consistent environments. Use Selenium Grid or Playwright's built-in parallelism for speed.</div>
+</div>
+</div>
+
+<!-- ===== TAB 3: JAVA + SELENIUM ===== -->
+<div id="t3" class="tc">
+<span class="badge bo">SECTION 3</span>
+<h2>Build Java + Selenium + TestNG Framework from Scratch</h2>
+<p style="color:var(--muted);margin-bottom:20px">Step-by-step guide to building a production-grade Selenium framework with Page Object Model, TestNG, and Maven.</p>
+
+<h3>📁 Project Structure</h3>
+<div class="folder">
+<strong>selenium-framework/</strong>
+├── pom.xml
+├── src/
+│   ├── main/java/
+│   │   ├── config/
+│   │   │   └── ConfigReader.java
+│   │   ├── driver/
+│   │   │   └── DriverFactory.java        <span class="cm">← Singleton + ThreadLocal</span>
+│   │   ├── pages/
+│   │   │   ├── BasePage.java
+│   │   │   ├── LoginPage.java
+│   │   │   └── HomePage.java
+│   │   └── utils/
+│   │       ├── WaitUtils.java
+│   │       └── ScreenshotUtils.java
+│   └── test/java/
+│       ├── base/
+│       │   └── BaseTest.java              <span class="cm">← @BeforeMethod / @AfterMethod</span>
+│       └── tests/
+│           ├── LoginTest.java
+│           └── HomeTest.java
+├── src/test/resources/
+│   ├── config.properties
+│   └── testng.xml
+└── reports/
+</div>
+
+<h3>Step 1: Maven Dependencies (pom.xml)</h3>
+<pre><span class="cm">&lt;!-- Key dependencies --&gt;</span>
+&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;
+        &lt;artifactId&gt;selenium-java&lt;/artifactId&gt;
+        &lt;version&gt;<span class="nl">4.27.0</span>&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.testng&lt;/groupId&gt;
+        &lt;artifactId&gt;testng&lt;/artifactId&gt;
+        &lt;version&gt;<span class="nl">7.10.2</span>&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;io.github.bonigarcia&lt;/groupId&gt;
+        &lt;artifactId&gt;webdrivermanager&lt;/artifactId&gt;
+        &lt;version&gt;<span class="nl">5.9.2</span>&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;io.qameta.allure&lt;/groupId&gt;
+        &lt;artifactId&gt;allure-testng&lt;/artifactId&gt;
+        &lt;version&gt;<span class="nl">2.29.0</span>&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;</pre>
+
+<h3>Step 2: DriverFactory (Singleton + ThreadLocal)</h3>
+<pre><span class="kw">public class</span> <span class="ty">DriverFactory</span> {
+
+    <span class="cm">// ThreadLocal ensures each thread gets its own WebDriver</span>
+    <span class="kw">private static</span> ThreadLocal&lt;WebDriver&gt; tlDriver = <span class="kw">new</span> ThreadLocal&lt;&gt;();
+
+    <span class="kw">public static</span> WebDriver <span class="fn">initDriver</span>(String browser) {
+        <span class="kw">switch</span> (browser.toLowerCase()) {
+            <span class="kw">case</span> <span class="st">"chrome"</span>:
+                WebDriverManager.chromedriver().setup();
+                tlDriver.set(<span class="kw">new</span> ChromeDriver());
+                <span class="kw">break</span>;
+            <span class="kw">case</span> <span class="st">"firefox"</span>:
+                WebDriverManager.firefoxdriver().setup();
+                tlDriver.set(<span class="kw">new</span> FirefoxDriver());
+                <span class="kw">break</span>;
+            <span class="kw">case</span> <span class="st">"edge"</span>:
+                WebDriverManager.edgedriver().setup();
+                tlDriver.set(<span class="kw">new</span> EdgeDriver());
+                <span class="kw">break</span>;
+        }
+        <span class="fn">getDriver</span>().manage().window().maximize();
+        <span class="fn">getDriver</span>().manage().timeouts()
+            .implicitlyWait(Duration.ofSeconds(<span class="nl">10</span>));
+        <span class="kw">return</span> <span class="fn">getDriver</span>();
+    }
+
+    <span class="kw">public static</span> WebDriver <span class="fn">getDriver</span>() {
+        <span class="kw">return</span> tlDriver.get();
+    }
+
+    <span class="kw">public static void</span> <span class="fn">quitDriver</span>() {
+        <span class="kw">if</span> (tlDriver.get() != <span class="kw">null</span>) {
+            tlDriver.get().quit();
+            tlDriver.remove();  <span class="cm">// prevent memory leaks</span>
+        }
+    }
+}</pre>
+
+<h3>Step 3: BasePage (Common Actions)</h3>
+<pre><span class="kw">public class</span> <span class="ty">BasePage</span> {
+    <span class="kw">protected</span> WebDriver driver;
+    <span class="kw">protected</span> WebDriverWait wait;
+
+    <span class="kw">public</span> <span class="fn">BasePage</span>(WebDriver driver) {
+        <span class="kw">this</span>.driver = driver;
+        <span class="kw">this</span>.wait = <span class="kw">new</span> WebDriverWait(driver, Duration.ofSeconds(<span class="nl">15</span>));
+    }
+
+    <span class="kw">protected void</span> <span class="fn">click</span>(By locator) {
+        wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+    }
+
+    <span class="kw">protected void</span> <span class="fn">type</span>(By locator, String text) {
+        WebElement el = wait.until(
+            ExpectedConditions.visibilityOfElementLocated(locator));
+        el.clear();
+        el.sendKeys(text);
+    }
+
+    <span class="kw">protected</span> String <span class="fn">getText</span>(By locator) {
+        <span class="kw">return</span> wait.until(
+            ExpectedConditions.visibilityOfElementLocated(locator)).getText();
+    }
+}</pre>
+
+<h3>Step 4: Page Object (LoginPage)</h3>
+<pre><span class="kw">public class</span> <span class="ty">LoginPage</span> <span class="kw">extends</span> BasePage {
+    <span class="kw">private</span> By usernameField = By.id(<span class="st">"username"</span>);
+    <span class="kw">private</span> By passwordField = By.id(<span class="st">"password"</span>);
+    <span class="kw">private</span> By loginButton  = By.id(<span class="st">"login-btn"</span>);
+    <span class="kw">private</span> By errorMessage  = By.className(<span class="st">"error"</span>);
+
+    <span class="kw">public</span> <span class="fn">LoginPage</span>(WebDriver driver) { <span class="kw">super</span>(driver); }
+
+    <span class="kw">public</span> LoginPage <span class="fn">enterUsername</span>(String user) {
+        type(usernameField, user);
+        <span class="kw">return this</span>;  <span class="cm">// fluent pattern</span>
+    }
+
+    <span class="kw">public</span> LoginPage <span class="fn">enterPassword</span>(String pass) {
+        type(passwordField, pass);
+        <span class="kw">return this</span>;
+    }
+
+    <span class="kw">public</span> HomePage <span class="fn">clickLogin</span>() {
+        click(loginButton);
+        <span class="kw">return new</span> HomePage(driver);
+    }
+
+    <span class="kw">public</span> String <span class="fn">getError</span>() { <span class="kw">return</span> getText(errorMessage); }
+}</pre>
+
+<h3>Step 5: BaseTest and Test Class</h3>
+<pre><span class="kw">public class</span> <span class="ty">BaseTest</span> {
+    <span class="kw">protected</span> WebDriver driver;
+
+    <span class="an">@BeforeMethod</span>
+    <span class="kw">public void</span> <span class="fn">setUp</span>() {
+        String browser = ConfigReader.get(<span class="st">"browser"</span>);
+        driver = DriverFactory.initDriver(browser);
+        driver.get(ConfigReader.get(<span class="st">"baseUrl"</span>));
+    }
+
+    <span class="an">@AfterMethod</span>
+    <span class="kw">public void</span> <span class="fn">tearDown</span>() {
+        DriverFactory.quitDriver();
+    }
+}
+
+<span class="cm">// --- LoginTest.java ---</span>
+<span class="kw">public class</span> <span class="ty">LoginTest</span> <span class="kw">extends</span> BaseTest {
+
+    <span class="an">@Test</span>
+    <span class="kw">public void</span> <span class="fn">testValidLogin</span>() {
+        LoginPage loginPage = <span class="kw">new</span> LoginPage(driver);
+        HomePage home = loginPage
+            .enterUsername(<span class="st">"admin"</span>)
+            .enterPassword(<span class="st">"pass123"</span>)
+            .clickLogin();
+
+        Assert.assertEquals(home.getWelcomeText(), <span class="st">"Welcome, Admin"</span>);
+    }
+
+    <span class="an">@Test</span>
+    <span class="kw">public void</span> <span class="fn">testInvalidLogin</span>() {
+        LoginPage loginPage = <span class="kw">new</span> LoginPage(driver);
+        loginPage.enterUsername(<span class="st">"wrong"</span>).enterPassword(<span class="st">"wrong"</span>);
+        loginPage.clickLogin();
+        Assert.assertTrue(loginPage.getError().contains(<span class="st">"Invalid"</span>));
+    }
+}</pre>
+
+<h3>Step 6: testng.xml (Parallel Config)</h3>
+<pre>&lt;suite name=<span class="st">"Regression"</span> parallel=<span class="st">"methods"</span> thread-count=<span class="st">"3"</span>&gt;
+    &lt;test name=<span class="st">"Login Tests"</span>&gt;
+        &lt;classes&gt;
+            &lt;class name=<span class="st">"tests.LoginTest"</span>/&gt;
+            &lt;class name=<span class="st">"tests.HomeTest"</span>/&gt;
+        &lt;/classes&gt;
+    &lt;/test&gt;
+&lt;/suite&gt;</pre>
+<div class="tip"><strong>💡 Key:</strong> The ThreadLocal in DriverFactory + parallel="methods" in testng.xml = safe parallel execution. Each thread gets its own browser. This is the #1 follow-up question interviewers ask.</div>
+</div>
+
+<!-- ===== TAB 4: JS + PLAYWRIGHT ===== -->
+<div id="t4" class="tc">
+<span class="badge bp">SECTION 4</span>
+<h2>Build JavaScript + Playwright Framework from Scratch</h2>
+<p style="color:var(--muted);margin-bottom:20px">Modern, fast, auto-waiting. Playwright is the future of UI automation.</p>
+
+<h3>📁 Project Structure</h3>
+<div class="folder">
+<strong>playwright-framework/</strong>
+├── package.json
+├── playwright.config.ts
+├── pages/
+│   ├── BasePage.ts
+│   ├── LoginPage.ts
+│   └── HomePage.ts
+├── tests/
+│   ├── login.spec.ts
+│   └── home.spec.ts
+├── fixtures/
+│   └── testFixtures.ts           <span class="cm">← Custom fixtures</span>
+├── test-data/
+│   └── users.json
+└── utils/
+    └── apiHelper.ts
+</div>
+
+<h3>Step 1: Setup</h3>
+<pre><span class="cm"># Initialize project</span>
+npm init -y
+npm install -D @playwright/test
+npx playwright install
+
+<span class="cm"># This installs Playwright + browser binaries (Chromium, Firefox, WebKit)</span></pre>
+
+<h3>Step 2: playwright.config.ts</h3>
+<pre><span class="kw">import</span> { defineConfig, devices } <span class="kw">from</span> <span class="st">'@playwright/test'</span>;
+
+<span class="kw">export default</span> defineConfig({
+  testDir: <span class="st">'./tests'</span>,
+  timeout: <span class="nl">30000</span>,
+  retries: <span class="nl">1</span>,
+  workers: <span class="nl">4</span>,          <span class="cm">// ← parallel workers!</span>
+  reporter: [
+    [<span class="st">'html'</span>, { open: <span class="st">'never'</span> }],
+    [<span class="st">'list'</span>]
+  ],
+  use: {
+    baseURL: <span class="st">'https://your-app.com'</span>,
+    screenshot: <span class="st">'only-on-failure'</span>,
+    video: <span class="st">'retain-on-failure'</span>,
+    trace: <span class="st">'on-first-retry'</span>,
+  },
+  projects: [
+    { name: <span class="st">'chromium'</span>, use: { ...devices[<span class="st">'Desktop Chrome'</span>] } },
+    { name: <span class="st">'firefox'</span>,  use: { ...devices[<span class="st">'Desktop Firefox'</span>] } },
+    { name: <span class="st">'webkit'</span>,   use: { ...devices[<span class="st">'Desktop Safari'</span>] } },
+  ],
+});</pre>
+
+<h3>Step 3: BasePage</h3>
+<pre><span class="kw">import</span> { Page, Locator } <span class="kw">from</span> <span class="st">'@playwright/test'</span>;
+
+<span class="kw">export class</span> <span class="ty">BasePage</span> {
+  <span class="kw">readonly</span> page: Page;
+
+  <span class="kw">constructor</span>(page: Page) {
+    <span class="kw">this</span>.page = page;
+  }
+
+  <span class="kw">async</span> <span class="fn">navigate</span>(path: <span class="ty">string</span>) {
+    <span class="kw">await</span> <span class="kw">this</span>.page.goto(path);
+  }
+
+  <span class="kw">async</span> <span class="fn">click</span>(locator: Locator) {
+    <span class="kw">await</span> locator.click();  <span class="cm">// auto-waits!</span>
+  }
+
+  <span class="kw">async</span> <span class="fn">fill</span>(locator: Locator, text: <span class="ty">string</span>) {
+    <span class="kw">await</span> locator.fill(text);
+  }
+
+  <span class="kw">async</span> <span class="fn">getText</span>(locator: Locator): Promise&lt;<span class="ty">string</span>&gt; {
+    <span class="kw">return await</span> locator.textContent() ?? <span class="st">''</span>;
+  }
+}</pre>
+
+<h3>Step 4: LoginPage</h3>
+<pre><span class="kw">import</span> { Page } <span class="kw">from</span> <span class="st">'@playwright/test'</span>;
+<span class="kw">import</span> { BasePage } <span class="kw">from</span> <span class="st">'./BasePage'</span>;
+
+<span class="kw">export class</span> <span class="ty">LoginPage</span> <span class="kw">extends</span> BasePage {
+  <span class="kw">private</span> usernameInput = <span class="kw">this</span>.page.locator(<span class="st">'#username'</span>);
+  <span class="kw">private</span> passwordInput = <span class="kw">this</span>.page.locator(<span class="st">'#password'</span>);
+  <span class="kw">private</span> loginBtn      = <span class="kw">this</span>.page.locator(<span class="st">'#login-btn'</span>);
+  <span class="kw">private</span> errorMsg      = <span class="kw">this</span>.page.locator(<span class="st">'.error'</span>);
+
+  <span class="kw">constructor</span>(page: Page) { <span class="kw">super</span>(page); }
+
+  <span class="kw">async</span> <span class="fn">login</span>(user: <span class="ty">string</span>, pass: <span class="ty">string</span>) {
+    <span class="kw">await</span> <span class="kw">this</span>.fill(<span class="kw">this</span>.usernameInput, user);
+    <span class="kw">await</span> <span class="kw">this</span>.fill(<span class="kw">this</span>.passwordInput, pass);
+    <span class="kw">await</span> <span class="kw">this</span>.click(<span class="kw">this</span>.loginBtn);
+  }
+
+  <span class="kw">async</span> <span class="fn">getErrorMessage</span>() {
+    <span class="kw">return await</span> <span class="kw">this</span>.getText(<span class="kw">this</span>.errorMsg);
+  }
+}</pre>
+
+<h3>Step 5: Test File (login.spec.ts)</h3>
+<pre><span class="kw">import</span> { test, expect } <span class="kw">from</span> <span class="st">'@playwright/test'</span>;
+<span class="kw">import</span> { LoginPage } <span class="kw">from</span> <span class="st">'../pages/LoginPage'</span>;
+
+test.describe(<span class="st">'Login Tests'</span>, () => {
+
+  test(<span class="st">'valid login redirects to home'</span>, <span class="kw">async</span> ({ page }) => {
+    <span class="kw">const</span> loginPage = <span class="kw">new</span> LoginPage(page);
+    <span class="kw">await</span> loginPage.navigate(<span class="st">'/login'</span>);
+    <span class="kw">await</span> loginPage.login(<span class="st">'admin'</span>, <span class="st">'pass123'</span>);
+    <span class="kw">await</span> expect(page).toHaveURL(<span class="st">'/home'</span>);
+    <span class="kw">await</span> expect(page.locator(<span class="st">'.welcome'</span>))
+      .toHaveText(<span class="st">'Welcome, Admin'</span>);
+  });
+
+  test(<span class="st">'invalid login shows error'</span>, <span class="kw">async</span> ({ page }) => {
+    <span class="kw">const</span> loginPage = <span class="kw">new</span> LoginPage(page);
+    <span class="kw">await</span> loginPage.navigate(<span class="st">'/login'</span>);
+    <span class="kw">await</span> loginPage.login(<span class="st">'wrong'</span>, <span class="st">'wrong'</span>);
+    <span class="kw">await</span> expect(page.locator(<span class="st">'.error'</span>))
+      .toContainText(<span class="st">'Invalid credentials'</span>);
+  });
+});
+
+<span class="cm">// Run: npx playwright test
+// Run headed: npx playwright test --headed
+// Run specific browser: npx playwright test --project=chromium
+// Show report: npx playwright show-report</span></pre>
+
+<div class="tip"><strong>💡 Playwright Parallel Execution:</strong> It's parallel by default! Each test file runs in a separate worker. Each test gets its own isolated BrowserContext (cookies, storage, session). No ThreadLocal needed — Playwright handles isolation natively. Just set <code>workers: 4</code> in config.</div>
+</div>
+
+<!-- ===== TAB 5: API + CUCUMBER ===== -->
+<div id="t5" class="tc">
+<span class="badge bp">SECTION 5</span>
+<h2>Build REST API + Cucumber + TestNG Framework</h2>
+<p style="color:var(--muted);margin-bottom:20px">BDD-driven API testing with Rest Assured, Cucumber, and TestNG in Java.</p>
+
+<h3>📁 Project Structure</h3>
+<div class="folder">
+<strong>api-framework/</strong>
+├── pom.xml
+├── src/test/java/
+│   ├── runner/
+│   │   └── TestRunner.java
+│   ├── stepdefinitions/
+│   │   └── UserAPISteps.java
+│   ├── utils/
+│   │   ├── ConfigReader.java
+│   │   └── RequestSpecBuilder.java
+│   └── pojos/
+│       └── User.java                <span class="cm">← POJO for serialization</span>
+├── src/test/resources/
+│   ├── features/
+│   │   └── user_api.feature
+│   ├── config.properties
+│   └── testng.xml
+</div>
+
+<h3>Step 1: Key Dependencies (pom.xml)</h3>
+<pre>&lt;dependencies&gt;
+    <span class="cm">&lt;!-- REST Assured --&gt;</span>
+    &lt;dependency&gt;
+        &lt;groupId&gt;io.rest-assured&lt;/groupId&gt;
+        &lt;artifactId&gt;rest-assured&lt;/artifactId&gt;
+        &lt;version&gt;<span class="nl">5.5.0</span>&lt;/version&gt;
+    &lt;/dependency&gt;
+    <span class="cm">&lt;!-- Cucumber --&gt;</span>
+    &lt;dependency&gt;
+        &lt;groupId&gt;io.cucumber&lt;/groupId&gt;
+        &lt;artifactId&gt;cucumber-java&lt;/artifactId&gt;
+        &lt;version&gt;<span class="nl">7.20.1</span>&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;io.cucumber&lt;/groupId&gt;
+        &lt;artifactId&gt;cucumber-testng&lt;/artifactId&gt;
+        &lt;version&gt;<span class="nl">7.20.1</span>&lt;/version&gt;
+    &lt;/dependency&gt;
+    <span class="cm">&lt;!-- TestNG --&gt;</span>
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.testng&lt;/groupId&gt;
+        &lt;artifactId&gt;testng&lt;/artifactId&gt;
+        &lt;version&gt;<span class="nl">7.10.2</span>&lt;/version&gt;
+    &lt;/dependency&gt;
+    <span class="cm">&lt;!-- JSON Serialization --&gt;</span>
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
+        &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;
+        &lt;version&gt;<span class="nl">2.18.2</span>&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;</pre>
+
+<h3>Step 2: Feature File (Gherkin / BDD)</h3>
+<pre><span class="an">Feature:</span> User API Testing
+  As a QA engineer, I want to validate User CRUD operations
+
+  <span class="an">Scenario:</span> Create a new user
+    <span class="kw">Given</span> the API base URL is configured
+    <span class="kw">When</span>  I send a POST request to "/users" with:
+      | name     | Karthik     |
+      | email    | k@test.com  |
+      | job      | SDET        |
+    <span class="kw">Then</span>  the response status code should be <span class="nl">201</span>
+    <span class="kw">And</span>   the response body should contain "Karthik"
+
+  <span class="an">Scenario:</span> Get user by ID
+    <span class="kw">Given</span> the API base URL is configured
+    <span class="kw">When</span>  I send a GET request to "/users/2"
+    <span class="kw">Then</span>  the response status code should be <span class="nl">200</span>
+    <span class="kw">And</span>   the response should have field "data.id" with value <span class="nl">2</span>
+
+  <span class="an">Scenario Outline:</span> Validate multiple users
+    <span class="kw">Given</span> the API base URL is configured
+    <span class="kw">When</span>  I send a GET request to "/users/&lt;id&gt;"
+    <span class="kw">Then</span>  the response status code should be <span class="nl">200</span>
+    <span class="kw">And</span>   the response should have field "data.email" containing "&lt;email&gt;"
+    <span class="an">Examples:</span>
+      | id | email              |
+      | 1  | george.bluth       |
+      | 2  | janet.weaver       |</pre>
+
+<h3>Step 3: Step Definitions</h3>
+<pre><span class="kw">public class</span> <span class="ty">UserAPISteps</span> {
+    <span class="kw">private</span> Response response;
+    <span class="kw">private</span> RequestSpecification request;
+
+    <span class="an">@Given</span>(<span class="st">"the API base URL is configured"</span>)
+    <span class="kw">public void</span> <span class="fn">setBaseUrl</span>() {
+        request = RestAssured.given()
+            .baseUri(ConfigReader.get(<span class="st">"baseUrl"</span>))
+            .contentType(ContentType.JSON)
+            .log().all();
+    }
+
+    <span class="an">@When</span>(<span class="st">"I send a POST request to {string} with:"</span>)
+    <span class="kw">public void</span> <span class="fn">sendPost</span>(String endpoint, DataTable table) {
+        Map&lt;String, String&gt; data = table.asMap(String.class, String.class);
+        response = request
+            .body(data)
+            .post(endpoint);
+    }
+
+    <span class="an">@When</span>(<span class="st">"I send a GET request to {string}"</span>)
+    <span class="kw">public void</span> <span class="fn">sendGet</span>(String endpoint) {
+        response = request.get(endpoint);
+    }
+
+    <span class="an">@Then</span>(<span class="st">"the response status code should be {int}"</span>)
+    <span class="kw">public void</span> <span class="fn">verifyStatusCode</span>(<span class="ty">int</span> code) {
+        Assert.assertEquals(response.getStatusCode(), code);
+    }
+
+    <span class="an">@Then</span>(<span class="st">"the response body should contain {string}"</span>)
+    <span class="kw">public void</span> <span class="fn">verifyBodyContains</span>(String text) {
+        Assert.assertTrue(response.getBody().asString().contains(text));
+    }
+
+    <span class="an">@Then</span>(<span class="st">"the response should have field {string} with value {int}"</span>)
+    <span class="kw">public void</span> <span class="fn">verifyField</span>(String path, <span class="ty">int</span> value) {
+        Assert.assertEquals((<span class="ty">int</span>) response.jsonPath().getInt(path), value);
+    }
+}</pre>
+
+<h3>Step 4: TestRunner (Cucumber + TestNG)</h3>
+<pre><span class="an">@CucumberOptions</span>(
+    features = <span class="st">"src/test/resources/features"</span>,
+    glue = <span class="st">"stepdefinitions"</span>,
+    plugin = {
+        <span class="st">"pretty"</span>,
+        <span class="st">"html:target/cucumber-reports.html"</span>,
+        <span class="st">"json:target/cucumber.json"</span>
+    },
+    monochrome = <span class="kw">true</span>
+)
+<span class="kw">public class</span> <span class="ty">TestRunner</span> <span class="kw">extends</span> AbstractTestNGCucumberTests {
+
+    <span class="an">@Override</span>
+    <span class="an">@DataProvider</span>(parallel = <span class="kw">true</span>)  <span class="cm">// ← enables parallel scenarios!</span>
+    <span class="kw">public</span> Object[][] scenarios() {
+        <span class="kw">return super</span>.scenarios();
+    }
+}</pre>
+
+<div class="tip"><strong>💡 Parallel API Tests:</strong> Override the <code>scenarios()</code> method with <code>@DataProvider(parallel = true)</code> and set <code>thread-count</code> in testng.xml. Each Cucumber scenario runs in its own thread. Since API tests don't share browser state, they're naturally thread-safe.</div>
+</div>
+
+<!-- ===== TAB 6: PARALLEL EXECUTION ===== -->
+<div id="t6" class="tc">
+<span class="badge by">SECTION 6</span>
+<h2>Parallel Execution Deep Dive — Multithreading in Frameworks</h2>
+<p style="color:var(--muted);margin-bottom:20px">The most asked senior SDET interview topic. Understand how parallel execution works under the hood.</p>
+
+<div class="card">
+<div class="q">Why Parallel Execution?</div>
+<div class="a">A test suite of 500 tests taking 3 seconds each = <strong>25 minutes sequential</strong>. With 5 parallel threads = <strong>~5 minutes</strong>. In CI/CD, fast feedback is critical. Parallel execution is not optional — it's expected.</div>
+</div>
+
+<h3>🔧 Java + Selenium + TestNG: ThreadLocal Pattern</h3>
+
+<div class="card">
+<div class="ct"><span class="n no">!</span> The Problem</div>
+<div class="a">Selenium WebDriver is <strong>NOT thread-safe</strong>. If you use a static WebDriver reference and run tests in parallel, all threads share the same driver instance → race conditions → random failures.<br><br>
+<strong>Solution:</strong> Java's <code>ThreadLocal&lt;WebDriver&gt;</code> class. It creates a separate copy of the variable for each thread. Thread A's WebDriver is invisible to Thread B.</div>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n no">⚙</span> ThreadLocal WebDriver Factory</div>
+<pre><span class="kw">public class</span> <span class="ty">DriverManager</span> {
+    <span class="kw">private static</span> ThreadLocal&lt;WebDriver&gt; driver = <span class="kw">new</span> ThreadLocal&lt;&gt;();
+
+    <span class="kw">public static void</span> <span class="fn">setDriver</span>(WebDriver d) {
+        driver.set(d);
+    }
+
+    <span class="kw">public static</span> WebDriver <span class="fn">getDriver</span>() {
+        <span class="kw">return</span> driver.get();
+    }
+
+    <span class="kw">public static void</span> <span class="fn">removeDriver</span>() {
+        driver.get().quit();
+        driver.remove();  <span class="cm">// CRITICAL: prevents memory leaks</span>
+    }
+}</pre>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n no">⚙</span> TestNG XML Configuration</div>
+<pre><span class="cm">&lt;!-- 4 parallel modes available --&gt;</span>
+
+<span class="cm">&lt;!-- 1. Parallel by METHODS — each @Test method in its own thread --&gt;</span>
+&lt;suite parallel=<span class="st">"methods"</span> thread-count=<span class="st">"5"</span>&gt;
+
+<span class="cm">&lt;!-- 2. Parallel by CLASSES — each class in its own thread --&gt;</span>
+&lt;suite parallel=<span class="st">"classes"</span> thread-count=<span class="st">"5"</span>&gt;
+
+<span class="cm">&lt;!-- 3. Parallel by TESTS — each &lt;test&gt; tag in its own thread --&gt;</span>
+&lt;suite parallel=<span class="st">"tests"</span> thread-count=<span class="st">"5"</span>&gt;
+
+<span class="cm">&lt;!-- 4. Parallel by INSTANCES — same instance methods in same thread --&gt;</span>
+&lt;suite parallel=<span class="st">"instances"</span> thread-count=<span class="st">"5"</span>&gt;</pre>
+<div class="a" style="margin-top:10px">
+<strong>Most common for Selenium:</strong> <code>parallel="tests"</code> where each <code>&lt;test&gt;</code> tag targets a different browser. Combined with ThreadLocal, each browser gets its own thread.
+</div>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n no">⚙</span> DataProvider Parallel Execution</div>
+<pre><span class="an">@DataProvider</span>(name = <span class="st">"browsers"</span>, parallel = <span class="kw">true</span>)
+<span class="kw">public</span> Object[][] <span class="fn">browserData</span>() {
+    <span class="kw">return new</span> Object[][] {
+        { <span class="st">"chrome"</span> }, { <span class="st">"firefox"</span> }, { <span class="st">"edge"</span> }
+    };
+}
+
+<span class="an">@Test</span>(dataProvider = <span class="st">"browsers"</span>)
+<span class="kw">public void</span> <span class="fn">crossBrowserTest</span>(String browser) {
+    WebDriver driver = DriverFactory.initDriver(browser);
+    driver.get(<span class="st">"https://example.com"</span>);
+    System.out.println(
+        <span class="st">"Thread: "</span> + Thread.currentThread().getId() +
+        <span class="st">" | Browser: "</span> + browser
+    );
+    driver.quit();
+}
+
+<span class="cm">// In testng.xml, set data-provider-thread-count="3"</span>
+&lt;suite data-provider-thread-count=<span class="st">"3"</span>&gt;</pre>
+</div>
+
+<div class="divider"></div>
+
+<h3>🎭 Playwright: Parallel by Default</h3>
+
+<div class="card">
+<div class="ct"><span class="n nb">⚙</span> How Playwright Parallelism Works</div>
+<div class="a">Playwright uses a <strong>worker-based model</strong>:<br><br>
+• Each <strong>test file</strong> (spec file) runs in a separate worker process<br>
+• Each test within a file gets its own isolated <strong>BrowserContext</strong> (separate cookies, session, storage)<br>
+• No shared state between tests = no race conditions<br>
+• No ThreadLocal needed — isolation is built-in<br><br>
+<strong>Configure in playwright.config.ts:</strong></div>
+<pre>{
+  workers: <span class="nl">4</span>,               <span class="cm">// 4 parallel worker processes</span>
+  fullyParallel: <span class="kw">true</span>,       <span class="cm">// parallelize tests WITHIN files too</span>
+  retries: <span class="nl">1</span>,                <span class="cm">// auto-retry failed tests once</span>
+}
+
+<span class="cm">// Run with CLI override:</span>
+npx playwright test --workers=<span class="nl">8</span></pre>
+</div>
+
+<div class="card">
+<div class="ct"><span class="n nb">⚙</span> Playwright Sharding (CI/CD Scale)</div>
+<div class="a">For massive test suites across multiple CI machines:</div>
+<pre><span class="cm"># Machine 1:</span>
+npx playwright test --shard=<span class="nl">1/3</span>
+
+<span class="cm"># Machine 2:</span>
+npx playwright test --shard=<span class="nl">2/3</span>
+
+<span class="cm"># Machine 3:</span>
+npx playwright test --shard=<span class="nl">3/3</span>
+
+<span class="cm"># Split 300 tests across 3 CI nodes = 100 each, running in parallel</span></pre>
+</div>
+
+<div class="divider"></div>
+
+<h3>🔌 REST API: Parallel Cucumber Scenarios</h3>
+
+<div class="card">
+<div class="ct"><span class="n np">⚙</span> Cucumber + TestNG Parallel</div>
+<div class="a">API tests are naturally thread-safe (no shared browser state). Parallelize at scenario level:</div>
+<pre><span class="cm">// In TestRunner.java:</span>
+<span class="an">@Override</span>
+<span class="an">@DataProvider</span>(parallel = <span class="kw">true</span>)
+<span class="kw">public</span> Object[][] <span class="fn">scenarios</span>() {
+    <span class="kw">return super</span>.scenarios();
+}
+
+<span class="cm">// In testng.xml:</span>
+&lt;suite name=<span class="st">"API Suite"</span> data-provider-thread-count=<span class="st">"10"</span>&gt;
+    &lt;test name=<span class="st">"API Tests"</span>&gt;
+        &lt;classes&gt;
+            &lt;class name=<span class="st">"runner.TestRunner"</span>/&gt;
+        &lt;/classes&gt;
+    &lt;/test&gt;
+&lt;/suite&gt;</pre>
+</div>
+
+<div class="divider"></div>
+
+<h3>📋 Parallel Execution Comparison Cheat Sheet</h3>
+<div class="card">
+<div class="a">
+<strong>Selenium + TestNG:</strong> Configure in testng.xml → <code>parallel="methods|classes|tests"</code> + <code>thread-count</code> → Use <code>ThreadLocal&lt;WebDriver&gt;</code> for thread safety → <code>driver.remove()</code> in teardown<br><br>
+
+<strong>Playwright:</strong> Set <code>workers</code> in config → Tests isolated via BrowserContext automatically → Use <code>fullyParallel: true</code> for within-file parallelism → Shard across CI machines with <code>--shard</code><br><br>
+
+<strong>Cucumber + TestNG:</strong> Override <code>scenarios()</code> with <code>@DataProvider(parallel=true)</code> → Set <code>data-provider-thread-count</code> in testng.xml → Each scenario runs in its own thread<br><br>
+
+<strong>Selenium Grid:</strong> Hub distributes tests to Node machines → Each node runs a browser instance → Combine with TestNG parallel for max throughput → Grid 4 uses Docker for easy node scaling
+</div>
+</div>
+
+<div class="tip"><strong>💡 Interview Golden Answer:</strong> "In my framework, I use ThreadLocal&lt;WebDriver&gt; with a DriverFactory class following the Singleton pattern. Each thread creates its own WebDriver instance via ThreadLocal.set(), and in @AfterMethod, I call ThreadLocal.remove() to prevent memory leaks. In testng.xml, I configure parallel='methods' with thread-count=5. For API tests, I use Cucumber's DataProvider with parallel=true since they're stateless and naturally thread-safe."</div>
+</div>
+
+<script>
+function st(id, el){
+  document.querySelectorAll('.tc').forEach(e=>e.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(e=>e.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+  window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'smooth'});
+}
+
+// Append credit when text is copied
+document.addEventListener('copy', function(e) {
+  var sel = window.getSelection().toString();
+  if (sel.length > 30) {
+    e.preventDefault();
+    var credit = sel + '\n\n— © Karthik_Knowledge Hub | sdet-automation-interview-guide';
+    e.clipboardData.setData('text/plain', credit);
+  }
+});
+</script>
+
+<footer class="footer">
+  <div class="copy-shield">
+    <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.12v4.7c0 4.83-3.4 9.36-7 10.5-3.6-1.14-7-5.67-7-10.5V6.3l7-3.12zM11 7v2h2V7h-2zm0 4v6h2v-6h-2z"/></svg>
+    © 2026 Karthik_Knowledge Hub
+  </div>
+  <p>Created with ❤️ by <strong style="color:var(--accent)">Karthik</strong> — SDET & Content Creator</p>
+  <p style="margin-top:6px">
+    <a href="https://youtube.com/@karthik_dev_hub?si=SDOZhQMrilwrBWLl" target="_blank">📺 YouTube</a> &nbsp;•&nbsp;
+    <a href="https://www.linkedin.com/in/karthik-deevaroy-1b894418b/" target="_blank">💼 LinkedIn</a> &nbsp;•&nbsp;
+    <a href="https://github.com/deevaroykarthik" target="_blank">🐙 GitHub</a>
+  </p>
+  <p style="margin-top:10px;font-size:.72rem;color:#4a5568">This content is original work. Unauthorized reproduction or distribution is prohibited.</p>
+</footer>
+
+</body>
+</html>
